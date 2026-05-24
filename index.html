@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday</title>
+<h1> haloo kokooo</h1>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body{
+      background:#2c2c2c;
+      overflow-x:hidden;
+    }
+
+    /* ===== SIDEBAR ===== */
+    .sidebar{
+      position:fixed;
+      left:-260px;
+      top:0;
+      width:260px;
+      height:100%;
+      background:#d6ccc2;
+      box-shadow:2px 0 15px rgba(0,0,0,0.2);
+      transition:0.4s;
+      z-index:1000;
+      padding:20px;
+    }
+    .sidebar.active{
+      left:0;
+    }
+
+    .sidebar h2{
+      color:#3b5998;
+      margin-bottom:20px;
+    }
+     .sidebar img{
+      width:100%;
+      border-radius:15px;
+      margin-bottom:15px;
+      object-fit:cover;
+    }
+
+    .sidebar p{
+      color:#444;
+      line-height:1.6;
+    }
+      /* Tombol menu */
+    .menu-btn{
+      position:fixed;
+      top:15px;
+      left:15px;
+      background:#3b5998;
+      color:white;
+      border:none;
+      padding:12px 15px;
+      border-radius:10px;
+      font-size:20px;
+      z-index:1100;
+      cursor:pointer;
+    }
+    /* ===== SLIDER ===== */
+    .slider{
+      display:flex;
+      width:300%;
+      transition:transform 0.5s ease-in-out;
+    }
+
+    .slide{
+      width:100vw;
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      padding:20px;
+      text-align:center;
+      color:white;
+    }
+     .slide:nth-child(1){
+       background:linear-gradient(135deg,#6f4e37,#a67b5b);
+    }
+
+    .slide:nth-child(2){
+      background:linear-gradient(135deg,#1e3c72,#2a5298);
+    }
+
+    .slide:nth-child(3){
+      background:linear-gradient(135deg,#4b4b4b,#8e9eab);
+    }
+
+     h1{
+      font-size:3rem;
+      margin-bottom:15px;
+    }
+
+    p{
+      font-size:1.2rem;
+      max-width:500px;
+    }
+/* Tombol navigasi */
+    .nav-buttons{
+      position:fixed;
+      bottom:20px;
+      width:100%;
+      display:flex;
+      justify-content:center;
+      gap:15px;
+      z-index:999;
+    }
+    .nav-buttons button{
+       padding:12px 20px;
+      border:none;
+      border-radius:30px;
+      background:white;
+      color:#333;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .nav-buttons button:hover{
+      transform:scale(1.05);
+    }
+     /* Responsive Android */
+    @media(max-width:768px){
+
+      h1{
+        font-size:2rem;
+      }
+
+      p{
+        font-size:1rem;
+      }
+
+      .sidebar{
+        width:220px;
+      }
+    }
+    /* ===== GALLERY FOTO ===== */
+
+.photo-gallery{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:15px;
+  margin-top:25px;
+  width:100%;
+  max-width:700px;
+}
+
+.photo-card{
+  background:rgba(255,255,255,0.15);
+  padding:10px;
+  border-radius:20px;
+  backdrop-filter:blur(5px);
+  transition:0.3s;
+}
+
+.photo-card:hover{
+  transform:scale(1.03);
+}
+
+/* FOTO POTRET */
+.photo-card img{
+  width:100%;
+  aspect-ratio:3 / 4;
+  object-fit:cover;
+  border-radius:15px;
+  display:block;
+}
+
+/* Android Responsive */
+@media(max-width:768px){
+
+  .photo-gallery{
+    gap:10px;
+  }
+
+  .photo-card{
+    padding:8px;
+  }
+}
+/* ===== SLIDE 1 CUSTOM ===== */
+
+.first-slide{
+  flex-direction:column;
+  padding:30px 20px;
+  background:
+  linear-gradient(
+    135deg,
+    #6f4e37,
+    #3b5998,
+    #7d7d7d
+  );
+}
+
+/* Foto utama */
+.main-photo{
+  width:220px;
+  margin-bottom:25px;
+}
+
+.main-photo img{
+  width:100%;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  border-radius:25px;
+  border:5px solid rgba(255,255,255,0.7);
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* Card */
+.birthday-card{
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(10px);
+  padding:25px;
+  border-radius:25px;
+  max-width:500px;
+  width:100%;
+  box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+.birthday-card h1{
+  font-size:2.5rem;
+  margin-bottom:15px;
+  color:#ffffff;
+}
+
+.message{
+  font-size:1.1rem;
+  line-height:1.8;
+  color:#f1f1f1;
+}
+
+/* Text kecil lucu */
+.mini-text{
+  margin-top:20px;
+  font-size:0.9rem;
+  color:#e0e0e0;
+  letter-spacing:2px;
+}
+
+/* Android Responsive */
+@media(max-width:768px){
+
+  .main-photo{
+    width:180px;
+  }
+
+  .birthday-card{
+    padding:20px;
+  }
+
+  .birthday-card h1{
+    font-size:2rem;
+  }
+
+  .message{
+    font-size:1rem;
+  }
+}
+/* ===== SLIDE 3 INTERACTIVE ===== */
+
+.third-slide{
+  position:relative;
+  overflow:hidden;
+  background:
+  linear-gradient(
+    135deg,
+    #3b5998,
+    #5c677d,
+    #6f4e37
+  );
+}
+
+/* Card utama */
+.quote-box{
+  position:relative;
+  z-index:2;
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(12px);
+  padding:35px 30px;
+  border-radius:30px;
+  width:90%;
+  max-width:600px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.25);
+  animation:floatBox 4s ease-in-out infinite;
+}
+
+.quote-icon{
+  font-size:3rem;
+  margin-bottom:15px;
+}
+
+.quote-box h1{
+  font-size:2.5rem;
+  margin-bottom:20px;
+  color:white;
+}
+
+.typing-text{
+  font-size:1.15rem;
+  line-height:1.9;
+  color:#f1f1f1;
+}
+
+/* Tombol lucu */
+.love-btn{
+  margin-top:25px;
+  padding:14px 28px;
+  border:none;
+  border-radius:40px;
+  background:white;
+  color:#3b5998;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+  font-size:1rem;
+}
+
+.love-btn:hover{
+  transform:scale(1.08);
+  background:#dbe4ff;
+}
+
+/* Animasi floating */
+@keyframes floatBox{
+  0%,100%{
+    transform:translateY(0px);
+  }
+  50%{
+    transform:translateY(-10px);
+  }
+}
+
+/* Dekorasi */
+.circle{
+  position:absolute;
+  border-radius:50%;
+  background:rgba(255,255,255,0.08);
+  animation:moveCircle 10s linear infinite;
+}
+
+.c1{
+  width:180px;
+  height:180px;
+  top:10%;
+  left:5%;
+}
+
+.c2{
+  width:250px;
+  height:250px;
+  bottom:-50px;
+  right:-50px;
+}
+
+.c3{
+  width:120px;
+  height:120px;
+  bottom:20%;
+  left:15%;
+}
+
+@keyframes moveCircle{
+  0%{
+    transform:translateY(0px);
+  }
+  50%{
+    transform:translateY(-20px);
+  }
+  100%{
+    transform:translateY(0px);
+  }
+}
+
+/* Android Responsive */
+@media(max-width:768px){
+
+  .quote-box{
+    padding:28px 22px;
+  }
+
+  .quote-box h1{
+    font-size:2rem;
+  }
+
+  .typing-text{
+    font-size:1rem;
+    line-height:1.7;
+  }
+
+  .love-btn{
+    width:100%;
+  }
+}
+/* ===== PENUTUP MOJOK KIRI ===== */
+
+.ending-note{
+  margin-top:28px;
+  width:100%;
+  text-align:left;
+  padding-left:10px;
+
+  font-size:0.95rem;
+  line-height:1.8;
+
+  color:#dbe4ff;
+  opacity:0.9;
+
+  border-left:3px solid
+  rgba(255,255,255,0.4);
+
+  animation:fadeIn 2s ease;
+}
+
+/* Animasi lembut */
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+
+  to{
+    opacity:0.9;
+    transform:translateY(0);
+  }
+}
+
+/* Android */
+@media(max-width:768px){
+
+  .ending-note{
+    font-size:0.9rem;
+    line-height:1.7;
+  }
+}
+
+/* ===== SIDEBAR DIARY ===== */
+.diary-sidebar{
+  position:fixed;
+  right:-320px;
+  top:0;
+  width:320px;
+  height:100%;
+  background:#f5f0e6; /* warna kertas diary */
+  box-shadow:-3px 0 20px rgba(0,0,0,0.3);
+  transition:0.4s;
+  z-index:1000;
+  padding:20px;
+
+  overflow-y:auto;
+}
+
+.diary-sidebar.active{
+  right:0;
+}
+
+.diary-sidebar h2{
+  text-align:center;
+  margin-bottom:20px;
+  color:#3b2f2f;
+}
+
+/* ===== HALAMAN DIARY ===== */
+.diary-page{
+  background:white;
+  border-radius:15px;
+  padding:12px;
+  margin-bottom:20px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* FOTO DIARY */
+.diary-page img{
+  width:100%;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  border-radius:12px;
+  margin-bottom:10px;
+}
+
+/* TEKS CERITA */
+.diary-text{
+  font-size:0.95rem;
+  color:#4a4a4a;
+  line-height:1.6;
+
+  background:#fff8e7;
+  padding:10px;
+  border-radius:10px;
+
+  border-left:3px solid #c4a484;
+}
+
+/* RESPONSIVE ANDROID */
+@media(max-width:768px){
+  .diary-sidebar{
+    width:85%;
+  }
+}
+
+.music-btn{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  padding:12px 18px;
+  border:none;
+  border-radius:50px;
+  background:#ff4b7d;
+  color:white;
+  cursor:pointer;
+  z-index:999;
+}
+  </style>
+</head>
+<body>
+  <button onclick="playMusic()" class="music-btn">🎵 Play Music</button>
+   <!-- Tombol Sidebar -->
+ <button class="menu-btn" onclick="toggleDiary()">📖</button>
+
+  <!-- ===== DIARY SIDEBAR ===== -->
+<div class="diary-sidebar" id="diarySidebar">
+
+  <h2>📖 Diary Kenangan</h2>
+
+  <!-- KENANGAN 1 -->
+  <div class="diary-page">
+    <img src="foto1.jpeg" alt="Kenangan 1">
+    <div class="diary-text">
+      Tulis cerita kenangan pertama di sini...
+    </div>
+  </div>
+
+  <!-- KENANGAN 2 -->
+  <div class="diary-page">
+    <img src="foto2.jpeg" alt="Kenangan 2">
+    <div class="diary-text">
+      Tulis cerita kenangan kedua di sini...
+    </div>
+  </div>
+
+  <!-- KENANGAN 3 -->
+  <div class="diary-page">
+    <img src="fotox.jpeg" alt="Kenangan 3">
+    <div class="diary-text">
+      Tulis cerita kenangan ketiga di sini...
+    </div>
+  </div>
+
+</div>
+
+   <!-- Slider -->
+  <div class="slider" id="slider">
+<!-- ===== SLIDE 1 ===== -->
+<section class="slide first-slide">
+
+  <!-- Foto Utama -->
+  <div class="main-photo">
+    <!-- GANTI FOTO -->
+    <img src="fotox.jpeg" alt="Birthday Photo">
+  </div>
+
+  <!-- Card Ucapan -->
+  <div class="birthday-card">
+
+    <h1>Happy Birthday 🎂</h1>
+
+    <p class="message">
+      Haii kokooo, ✨<br><br>
+
+      Kokoo udah make a wish belum nih hari inii? <br><br>
+      Selamat datang di website random fifiii wkwkwk
+    <br>
+        fifi buat web mini inii karena gabisa langsung ketemu wkskwkw. 
+        Semoga koko baik-baik aja disanaa yaaa, i wish that.. 
+        Happy birthday koko, cieee jadi tuaaa. Udah ngga seumuran sama fifi lagii yaa jadinya. <br>
+        Meski ini web sederhana, but i hope u like it wkwkwk.
+    </p>
+
+    <div class="mini-text">
+      Lets go to the next slide, kokooo
+    </div>
+
+  </div>
+
+</section>
+
+    <!-- Slide 2 -->
+    <section class="slide">
+      <h1>Flashback melukis timeeeee</h1>
+      <p>
+        its us
+      </p>
+           <div class="photo-gallery">
+
+    <!-- FOTO 1 -->
+    <div class="photo-card">
+      <img src="foto1.jpeg" alt="Foto 1">
+    </div>
+
+    <!-- FOTO 3 -->
+    <div class="photo-card">
+      <img src="fotox.jpeg" alt="Foto 3">
+    </div>
+
+    <!-- FOTO 4 -->
+    <div class="photo-card">
+      <img src="fotoy.jpeg" alt="Foto 4">
+    </div>
+
+<!-- FOTO 2 -->
+    <div class="photo-card">
+      <img src="foto2.jpeg" alt="Foto 2">
+    </div>
+
+  </div>
+    </section>
+
+<!-- ===== SLIDE 3 ===== -->
+<section class="slide third-slide">
+
+  <div class="quote-box">
+
+    <div class="quote-icon">💌</div>
+
+    <h1>Lets make a wish kokoo</h1>
+
+    <p class="typing-text" id="typingText">
+      Thanks for always be there for me kokooo✨
+      <br><br>
+      Kalo harapan fifii semoga setiap mimpi dan harapan koko tercapai yaaa.
+        Semoga koko selalu dikelilingi orang baik dan nyaman sama lingkungan kerjanyaa disana.
+        kalo misal memang dinyaman nyamanin mah yaaa koko yang kuat yaa dan semangatt okeiii, 
+        maka dari ituu ayo pulangg kesinii kerjanya disinii kokoo. 
+        You're so far away, i missed you huhu💙<br>
+        
+    </p>
+
+<!-- PENUTUP MOJOK KIRI -->
+<div class="ending-note">
+  Warm hug,<br>
+        Fifi
+</div>
+
+    <button class="love-btn" onclick="showLove()">
+      Klik duluuu disiniii
+    </button>
+
+  </div>
+
+  <!-- Dekorasi Bulat -->
+  <div class="circle c1"></div>
+  <div class="circle c2"></div>
+  <div class="circle c3"></div>
+
+</section>
+
+  </div>
+  <!-- Navigasi -->
+  <div class="nav-buttons">
+    <button onclick="prevSlide()">⬅ Prev</button>
+    <button onclick="nextSlide()">Next ➡</button>
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    const slider = document.getElementById("slider");
+    const totalSlides = 3;
+
+    function updateSlide() {
+      slider.style.transform =
+        `translateX(-${currentSlide * 100}vw)`;
+    }
+     function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateSlide();
+    }
+
+    function prevSlide() {
+      currentSlide =
+        (currentSlide - 1 + totalSlides) % totalSlides;
+      updateSlide();
+    }
+
+    // Swipe Android Support
+    let startX = 0;
+
+    document.addEventListener("touchstart", e => {
+      startX = e.touches[0].clientX;
+    });
+    document.addEventListener("touchend", e => {
+      let endX = e.changedTouches[0].clientX;
+
+      if(startX - endX > 50){
+        nextSlide();
+      }
+
+      if(endX - startX > 50){
+        prevSlide();
+      }
+    });
+     // Sidebar Toggle
+    function toggleSidebar(){
+      document
+        .getElementById("sidebar")
+        .classList.toggle("active");
+    }
+  </script>
+<script>
+  function showLove(){
+    alert(
+      " Udahh dibaca semuanya kah? hehehe aight then, babaaaii kokoo. Have a good day✨"
+    );
+  }
+</script>
+<script>
+  function toggleDiary(){
+    document
+      .getElementById("diarySidebar")
+      .classList.toggle("active");
+  }
+</script>
+<script>
+let pages = document.querySelectorAll(".page");
+let current = 0;
+
+function showPage(index){
+  pages.forEach(p => p.classList.remove("active"));
+  pages[index].classList.add("active");
+
+  typeEffect(pages[index].querySelector(".typewriter"));
+}
+
+function nextPage(){
+  if(current < pages.length - 1){
+    current++;
+    showPage(current);
+  }
+}
+
+function prevPage(){
+  if(current > 0){
+    current--;
+    showPage(current);
+  }
+}
+
+/* ===== TYPEWRITER EFFECT ===== */
+function typeEffect(el){
+  let text = el.textContent;
+  el.textContent = "";
+  let i = 0;
+
+  function typing(){
+    if(i < text.length){
+      el.textContent += text.charAt(i);
+      i++;
+      setTimeout(typing, 30);
+    }
+  }
+  typing();
+}
+
+/* init */
+showPage(0);
+
+/* ===== MUSIC AUTOPLAY ===== */
+let music = new Audio("ulangtahun.mp3");
+music.loop = true;
+
+function playMusic(){
+  music.play();
+}
+</script>
+</body>
+</html>
